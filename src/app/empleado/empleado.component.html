@@ -1,0 +1,17 @@
+<p>empleado works!</p>
+
+<ul *ngIf="trabajadorExterno; else trabajadoresInternos">
+    <li>{{empleadoExt.nombre}}</li>
+</ul>
+
+<ng-template #trabajadoresInternos>
+    <li>Lista de trabajadores internos</li>
+</ng-template>
+
+<ul>
+    @if (trabajadorExterno) {
+        <li>{{empleadoExt.nombre}}</li>
+    }@else{
+        <li>Lista de trabajadores internos</li>
+    }
+</ul>
