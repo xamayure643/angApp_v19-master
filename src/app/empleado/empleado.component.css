@@ -1,4 +1,16 @@
 /* Clases para el ejemplo de ngClass [cite: 69] */
+.fondoAzul {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+}
+
+.fondoVerde {
+    background-color: green;
+    color: white;
+    padding: 10px;
+}
+
 ul {
     list-style:none;
 }
