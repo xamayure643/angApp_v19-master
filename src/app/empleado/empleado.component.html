@@ -1,17 +1,46 @@
-<p>empleado works!</p>
-
 <ul *ngIf="trabajadorExterno; else trabajadoresInternos">
     <li>{{empleadoExt.nombre}}</li>
 </ul>
 
 <ng-template #trabajadoresInternos>
-    <li>Lista de trabajadores internos</li>
+    <h3>Listado de Empleados</h3>
+    <ul>
+        <li *ngFor="let emp of trabajadores; let i = index">
+            {{ i + 1 }} - <strong>{{ emp.nombre }}</strong> ({{ emp.cargo }})
+            
+            <span *ngIf="emp.Contratado" style="color: green;">[ACTIVO]</span>
+            <span *ngIf="!emp.Contratado" style="color: red;">[INACTIVO]</span>
+        </li>
+    </ul>
 </ng-template>
 
-<ul>
-    @if (trabajadorExterno) {
-        <li>{{empleadoExt.nombre}}</li>
-    }@else{
-        <li>Lista de trabajadores internos</li>
-    }
-</ul>
+<div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
+    <button (click)="cambiarExterno(true)">Mostrar Externo</button>
+    <button (click)="cambiarExterno(false)">Mostrar Internos</button>
+</div>
+
+<hr>
+<h3>Cambio de estilo dinámico</h3>
+<p>Escribe un color (blue, red, green) o un hexadecimal:</p>
+
+<input type="text" [(ngModel)]="color_seleccionado" />
+
+<div [ngStyle]="{
+       'background': color_seleccionado,
+       'width': '200px',
+       'height': '50px',
+       'margin-top': '10px',
+       'color': 'white',
+       'display': 'flex',
+       'align-items': 'center',
+       'justify-content': 'center'
+     }">
+     {{ color_seleccionado }}
+</div>
+
+<p [ngClass]="{
+    'fondoAzul': color_seleccionado == 'blue',
+    'fondoVerde': color_seleccionado == 'green'
+}">
+    Texto con clase dinámica (prueba escribiendo 'blue' o 'green')
+</p>
